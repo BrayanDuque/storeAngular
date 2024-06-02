@@ -21,7 +21,12 @@
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
+    //esto es para crear alias a las importaciones
+    "paths": {
+      "@compartido/*": ["./src/app/dominios/compartido/*"],
+      "@componentes/*": ["./src/app/dominios/productos/componentes/*"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

@@ -1,9 +1,15 @@
 import { ApplicationConfig } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { PreloadAllModules, provideRouter, withComponentInputBinding, withPreloading } from '@angular/router';
 
 import { routes } from './app.routes';
-import { provideClientHydration } from '@angular/platform-browser';
+//CON ESTA IMPORTACION NOS AYUDA HACER LLAMADOS A LAS API´S
+import { provideHttpClient, HttpClientModule, withFetch } from '@angular/common/http';
+
+
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), provideClientHydration()]
+  providers: [
+    provideRouter(routes,withComponentInputBinding(),withPreloading(PreloadAllModules)),
+     provideHttpClient()
+    ]
 };

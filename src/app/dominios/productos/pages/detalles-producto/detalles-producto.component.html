@@ -1,0 +1,38 @@
+<div class="w-full flex space-x-10">
+  <div class="flex flex-col w-1/3">
+    <div class="w-full rounded border border-gray-200">
+      <img
+        class="w-full object-cover object-center"
+        [src]="cover()" [alt]="producto()?.title"
+        />
+      </div>
+      <div class="flex items-center justify-center mt-1">
+        <div class="grid grid-cols-3 gap-1">
+          @for (img of producto()?.images; track img) {
+            <img
+              class="object-cover object-center rounded border-2 border-gray-200"
+              [src]="img" [alt]="producto()?.title"
+              (click)="changeCover(img)"
+              [class.border-gray-500] ="img === cover()"
+              />
+          }
+        </div>
+      </div>
+    </div>
+    <div class="mt-5 w-full">
+      <h2 class="text-sm title-font text-gray-500 tracking-widest">{{producto()?.categoria?.name }}</h2>
+      <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">
+        {{producto()?.title | uppercase}}
+      </h1>
+      <p class="leading-relaxed">
+        {{producto()?.description}}
+      </p>
+      <p class="title-font font-medium text-2xl text-gray-900 mt-5">{{producto()?.price | currency:'$':'symbol' : '1.3'}}</p>
+      <button
+        (click)="obtenerCarrito ()"
+        class="flex text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded"
+        >
+        Add To Cart
+      </button>
+    </div>
+  </div>

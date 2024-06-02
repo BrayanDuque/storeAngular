@@ -1,0 +1,25 @@
+<!-- las paginas se utilizan como algo para enrutar a la aplicación  -->
+<div class="flex space-x-4">
+  <!-- <div>
+    <ul >
+      <li><a routerLink="/">All</a></li>
+      @for (item of categoria(); track item) {
+        <li
+          >
+          <a routerLink="/" [queryParams]="{item_id : item.id}">{{item.name}}</a>
+        </li>
+      }
+    </ul>
+  </div> -->
+
+  <div class="grid grid-cols-4 gap-4 my-4">
+    <!-- hacemos el llamado del componente que importamos -->
+    <!-- se realiza un ciclo for para iterar la lista producto con sus respetivos valores la cual creamos en el arcivo ts -->
+    @for (item of producto(); track item) {
+      <app-producto
+        [productos]="item"
+        (agregarAlCarro)="addtoCart($event)"/>
+    }
+
+  </div>
+</div>
